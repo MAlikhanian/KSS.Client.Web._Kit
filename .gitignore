@@ -1,0 +1,5 @@
+node_modules/
+.next/
+*.bak-*
+!template/.env.local.tmpl
+!template/next-env.d.ts
