@@ -1,0 +1,16 @@
+node_modules/
+.next/
+*.bak-*
+!template/.env.local.tmpl
+!template/next-env.d.ts
+
+# Deployment and env files hold real values; only their example copies are committed.
+deployment/deployment.yaml
+deployment/docker-k8s-command.txt
+deployment/*.bak*
+*.bak-*
+.env
+.env.*
+# Re-allow the example env files after the rules above (a later rule wins).
+!.env.example
+!.env.*.example
