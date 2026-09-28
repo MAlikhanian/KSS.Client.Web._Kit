@@ -223,9 +223,7 @@ export const MENU_SIDEBAR: MenuConfig = [
     // single ungated child would keep the entire section visible to every
     // authenticated user, so each child states the code too.
     //
-    // This bites the moment it ships: until SPM.Read is seeded in Auth AND
-    // granted to a role, the section is hidden from everyone, SuperAdmin
-    // included.
+    // The section is visible only to users who hold SPM.Read.
     title: 'SPM Investment',
     icon: TrendingUp,
     permissions: ['SPM.Read'],
@@ -307,6 +305,11 @@ export const MENU_SIDEBAR: MenuConfig = [
       { title: 'Cash Advance Approvals', path: '/cash-advance/approvals', permissions: ['CashAdvance.Approval.Ceo', 'CashAdvance.Approval.FinancialManager'] },
       { title: 'Cash Advance Submit Invoice', path: '/cash-advance/invoice/submit', permissions: ['CashAdvance.Invoice.Submit'] },
       { title: 'Cash Advance Invoices', path: '/cash-advance/invoice/view', permissions: ['CashAdvance.Invoice.Read'] },
+      // Placement requested by the customer (2026-09-06): right-side menu, under the تنخواه
+      // section, labelled روکش تنخواه. Sits beside Invoices because it is an invoice-derived
+      // report. Gated on Invoice.Read to match the cover page's own guard, so it appears for
+      // exactly the people who can open it.
+      { title: 'Cash Advance Cover Sheet', path: '/cash-advance/invoice/cover', permissions: ['CashAdvance.Invoice.Read'] },
       { title: 'Cash Advance Ledger', path: '/cash-advance/ledger', permissions: ['CashAdvance.Ledger.Read'] },
       { title: 'Cash Advance Products', path: '/cash-advance/products', permissions: ['CashAdvance.Admin.Read'] },
       {
@@ -320,6 +323,13 @@ export const MENU_SIDEBAR: MenuConfig = [
       },
       { title: 'Cash Advance Person Limits', path: '/cash-advance/person-limits', permissions: ['CashAdvance.Admin.Read'] },
     ],
+  },
+  {
+    // Gated on Dms.Read; SuperAdmin deliberately does not hold it.
+    title: 'Dredging Management',
+    icon: Briefcase,
+    path: '/dms',
+    permissions: ['Dms.Read'],
   },
   {
     title: 'General Meeting',
